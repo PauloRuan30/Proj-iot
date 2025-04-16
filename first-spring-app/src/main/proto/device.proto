@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package com.example;
+
+service DeviceService {
+    rpc ListDevices (Empty) returns (DeviceList);
+    rpc GetDevice (DeviceRequest) returns (Device);
+    rpc CreateDevice (Device) returns (Device);
+    rpc UpdateDevice (Device) returns (Device);
+    rpc DeleteDevice (DeviceRequest) returns (Empty);
+}
+
+message Device {
+    int64 id = 1;
+    string name = 2;
+    string type = 3;
+    string location = 4;
+}
+
+message DeviceRequest {
+    int64 id = 1;
+}
+
+message DeviceList {
+    repeated Device devices = 1;
+}
+
+message Empty {}
